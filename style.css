@@ -1,0 +1,47 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+/* page header */
+.navheader{
+    background-color: #3C2C5B;
+    height:10rem;
+}
+body{
+    background-color:#dfe9f5 ;
+}
+nav
+{
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #3C2C5B;
+    overflow: hidden;
+    border: 1px solid;
+    box-shadow: 1px 2px 15px rgb(29, 2, 59);
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #A58ADA;
+}
+.btnSignUp{
+    background-color: white;
+    border: 1px solid #3C2C5B;
+    border-radius: 5%;
+}
+.btnHeader:hover{
+    background-color:#28a745 ;
+}
+.liHeader:hover{
+background-color: #A58ADA;
+border-radius: 5%;
+}
