@@ -1,7 +1,15 @@
 <?php 
-include("index.php");
-?>
-<section>
+$title= "home";
+include('../includes/header.php')?>
 
-</section>
-<!-- content.html = "" , content.html = data() -->
+    <div class="row">
+
+            <div class="col-3 ">
+            <?php include('../includes/sidebar.php')?>
+            </div>
+            <div class="col-9">
+                <h1>Home</h1>
+            </div>
+            
+    </div>
+<?php include('../includes/footer.php')?>
