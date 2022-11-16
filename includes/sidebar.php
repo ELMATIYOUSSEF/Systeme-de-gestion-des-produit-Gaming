@@ -3,7 +3,7 @@
                 <ul class=" d-flex flex-column list-inline ">
                     <li class="text-center py-4  list-group-item">
                         <a href="#" class="logo  ">
-                            <img class="w-50 " src="../esset/img/Red_Dragon_Logo-removebg-preview.png" alt="">
+                            <img class="w-50 " src="../Assets/img/Red_Dragon_Logo-removebg-preview.png" alt="">
                         </a>
                     </li>
                     <li  class="text-center text-uppercase fs-3  fw-bold font-monospace  py-4  list-group-item btn btn-secondary"><a href="Home.php" class="text-decoration-none  text-white">

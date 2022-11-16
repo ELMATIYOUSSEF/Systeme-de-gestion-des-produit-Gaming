@@ -3,7 +3,7 @@ include('../includes/header.php')?>
 <nav class="navheader">
     <div class="d-flex flex-row justify-content-evenly align-items-center " >
         <div class="logo ">
-               <img src="../esset/img/Red_Dragon_Logo-removebg-preview.png" class=" w-25" alt="">
+               <img src="../Assets/img/Red_Dragon_Logo-removebg-preview.png" class=" w-25" alt="">
         </div>
         
       <ul class="d-flex flex-row navbar-nav text-uppercase fs-4 fw-bold font-monospace text-white">
