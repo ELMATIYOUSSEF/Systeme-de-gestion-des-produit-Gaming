@@ -16,7 +16,7 @@
                             <span class="nav-item">Profile </span>
                         </a>
                     </li>
-                    <li  class="text-center py-4 text-uppercase fs-3  fw-bold font-monospace  list-group-item btn btn-secondary"><a href="index.php" class="text-decoration-none text-white">
+                    <li  class="text-center py-4 text-uppercase fs-3  fw-bold font-monospace  list-group-item btn btn-secondary"><a href="admin.php" class="text-decoration-none text-white">
                             <i class="fas fa-home"> </i>
                             <span class="nav-item">Admin </span>
                         </a>

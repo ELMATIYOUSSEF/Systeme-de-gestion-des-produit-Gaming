@@ -49,12 +49,26 @@ border-radius: 5%;
 /* login page  */
 .Login_Title{
     margin-left: 12rem;
+    font-size: 40px;
+    overflow: hidden;
 }
 .LoginForm {
-margin-left: 7rem;
+margin-left: 14rem;
 }
 #imgmen::after{
     content: url(../img/circle.png);
     width: 100%;
     height: 100vh;
 }
+#imgmen{
+    margin-left: 8rem
+}
+strong{
+    color: #FF9EDD;
+}
+input[type=email] {
+    background-color: #FF9EDD;
+  }
+  input[type=password] {
+    background-color: #FF9EDD;
+  }
