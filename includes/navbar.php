@@ -2,7 +2,7 @@
 <nav class="navheader">
     <div class="d-flex flex-row justify-content-evenly align-items-center " >
         <div class="logo ">
-               <img src="Assets/img/Red_Dragon_Logo-removebg-preview.png" class=" w-25" alt="">
+               <img src=<?php echo $img ?> class=" w-25" alt="">
         </div>
         
       <ul class="d-flex flex-row navbar-nav text-uppercase fs-4 fw-bold font-monospace text-white">
@@ -17,8 +17,8 @@
         </li>
       </ul>
       <div>
-      <a href="#" class="text-decoration-none btn btnHeader text-uppercase fs-4 fw-bold font-monospace text-white" >Login </a>
-        <a class="btnSignUp py-2 px-4 btn btnHeader text-uppercase fs-4 fw-bold font-monospace " type="button">Sign Up</a>
+      <a href=<?php echo $login?> class="text-decoration-none btn btnHeader text-uppercase fs-4 fw-bold font-monospace text-white" >Login </a>
+        <a href=<?php echo $signup?> class="btnSignUp py-2 px-4 btn btnHeader text-uppercase fs-4 fw-bold font-monospace " type="button">Sign Up</a>
       </div>
     </div>
 </nav>

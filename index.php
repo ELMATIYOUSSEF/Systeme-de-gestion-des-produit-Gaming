@@ -1,3 +1,7 @@
+<?php
+include('config/scripts.php'); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,27 +18,42 @@
 </head>
 
 <body>
-<?php include('includes/navbar.php')?>
+<?php
+$login="index.php";
+$signup = "pages/signup.php";
+$img = "Assets/img/Red_Dragon_Logo-removebg-preview.png";
+ include('includes/navbar.php')?>
 
 <div class="row container d-flex  justify-content-between align-items-center pt-5 ">
 
             <div class="col-6 px-5 ">
+            <div class="circle"></div>
             <img src="Assets/img/men.png" id="imgmen" alt="">
             </div>
             <div class="col-6">
+            <?php if (isset($_SESSION['message'])): ?>
+				<div class="alert alert-green alert-dismissible fade show">
+				<strong>Success!</strong>
+					<?php 
+						echo $_SESSION['message']; 
+						unset($_SESSION['message']);
+					?>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+				</div>
+			<?php endif ?>
                  <form class="row g-3 LoginForm ">
                    <h1 class=" fw-bold  font-monospace ">Login</h1>
                     <div class="col-12 ">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" class="form-control inputColor" id="inputEmail4" placeholder="Email@gmail.com">
+                        <input type="email" name="email" class="form-control inputColor" id="inputEmail4" placeholder="Email@gmail.com">
                     </div>
                     <div class="col-12 ">
                         <label for="inputPassword4" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="*********" >
+                        <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="*********" >
                     </div>
                    
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" name=" SignIn" class="btn btn-primary">Sign in</button>
                     </div>
                     <p><a href="#" class="text-decoration-none"> Forgot password?</a></p>
                     <p>Not a member yet? Choose a <br> <strong> Gaming-YOUCODE </strong> plan and get started now!</p>
