@@ -28,7 +28,7 @@ $img="../Assets/img/Red_Dragon_Logo-removebg-preview.png";
 <div class="row container d-flex  justify-content-between align-items-center pt-5 ">
             
             <div class="col-6">
-                 <form class="row g-3 LoginForm ">
+                 <form class="row g-3 LoginForm " action="../config/scripts.php" method ="post">
                    <h1 class=" fw-bold  font-monospace ">Create new Account</h1>
                    <div class="col-6 ">
                         <label for="inputname"   class="form-label"> Name</label>
@@ -48,7 +48,7 @@ $img="../Assets/img/Red_Dragon_Logo-removebg-preview.png";
                     </div>
                    
                     <div class="col-12">
-                        <button type="submit" name=" SignIn" class="btn btn-primary">Sign Up</button>
+                        <button type="submit" name=" SignUp" class="btn btn-primary">Sign Up</button>
                     </div>
                     </form>
             </div>      

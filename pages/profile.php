@@ -1,4 +1,7 @@
-<?php include('../includes/header.php')?>
+<?php 
+include('../config/scripts.php');
+checkisadmin();
+include('../includes/header.php')?>
 
     <div class="row">
 

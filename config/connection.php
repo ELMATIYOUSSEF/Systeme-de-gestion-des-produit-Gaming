@@ -3,7 +3,7 @@
     $_SERVER ='localhost';
     $_Root ='root';
     $_Password='';
-    $_DataBase ='GamingGestion';
+    $_DataBase ='gaminggestion';
 
     //database connection 
     $connection = mysqli_connect($_SERVER,$_Root,$_Password,$_DataBase);

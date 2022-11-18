@@ -1,4 +1,6 @@
 <?php
+include('../config/scripts.php');
+checkisadmin();
 $title = 'Gaming'; 
 include('../includes/header.php')
 ?>

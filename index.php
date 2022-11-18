@@ -1,5 +1,5 @@
 <?php
-include('config/scripts.php'); 
+include('config/scripts.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,17 +31,18 @@ $img = "Assets/img/Red_Dragon_Logo-removebg-preview.png";
             <img src="Assets/img/men.png" id="imgmen" alt="">
             </div>
             <div class="col-6">
-            <?php if (isset($_SESSION['message'])): ?>
-				<div class="alert alert-green alert-dismissible fade show">
-				<strong>Success!</strong>
+            
+                 <form class="row g-3 LoginForm" action="config/scripts.php" method="post">
+                 <?php if (isset($_SESSION['Vide'])): ?>
+				<div class="alert alert-danger alert-dismissible fade show">
+				<strong>Erorr!</strong>
 					<?php 
-						echo $_SESSION['message']; 
-						unset($_SESSION['message']);
+						echo $_SESSION['Vide']; 
+						unset($_SESSION['Vide']);
 					?>
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
 				</div>
 			<?php endif ?>
-                 <form class="row g-3 LoginForm ">
                    <h1 class=" fw-bold  font-monospace ">Login</h1>
                     <div class="col-12 ">
                         <label for="inputEmail4" class="form-label">Email</label>
@@ -53,7 +54,7 @@ $img = "Assets/img/Red_Dragon_Logo-removebg-preview.png";
                     </div>
                    
                     <div class="col-12">
-                        <button type="submit" name=" SignIn" class="btn btn-primary">Sign in</button>
+                        <button type="submit" name="SignIn" class="btn btn-primary">Sign in</button>
                     </div>
                     <p><a href="#" class="text-decoration-none"> Forgot password?</a></p>
                     <p>Not a member yet? Choose a <br> <strong> Gaming-YOUCODE </strong> plan and get started now!</p>
