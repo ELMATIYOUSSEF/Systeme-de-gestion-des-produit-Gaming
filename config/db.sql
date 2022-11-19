@@ -1,3 +1,19 @@
+-- phpMyAdmin SQL 
+-- Generation Time: novembre 18, 2022 at 11:16 AM
+-- PHP Version: 8.1.6
+
+
+--
+-- Database: `gaminggestion`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+
 CREATE TABLE `admin`(
     `Id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL ,
 `Name` varchar(255) DEFAULT NULL,
@@ -6,10 +22,24 @@ CREATE TABLE `admin`(
     `PassWord` varchar(255) DEFAULT NULL
 );
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categorie`
+--
+
 CREATE TABLE `categorie`(
     `Id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL ,
     `Label` varchar(255)
 );
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
 
 CREATE TABLE `product`(
     `Id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL ,

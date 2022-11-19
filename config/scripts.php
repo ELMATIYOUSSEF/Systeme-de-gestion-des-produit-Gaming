@@ -19,6 +19,7 @@ if(isset($_POST['SignIn'])) SignIn();
 if(isset($_POST['SignUp'])) SignUp();
 if(isset($_POST['saveCategorie'])) saveCategorie();
 if(isset($_POST['addProduit'])) saveGames();
+
  
 //page login
 //********* function SignIn  ************/
@@ -76,15 +77,15 @@ function SignUp(){
         $sql = "INSERT INTO admin (Name,UserName,Email,PassWord) VALUES ('$name','$username','$email','$password')";
         $result = mysqli_query($connection,$sql);
 
-        $_SESSION['accountCreated'] = 'your account has beeen created successfully';
+        $_SESSION['correct'] = 'your account has beeen created successfully';
         header('location: ../index.php');
     }else{
-        $_SESSION['emailExist'] = 'this email is already exist';
+        $_SESSION['Error'] = 'this email is already exist';
         header('location: .././pages/signup.php');
     }
 }else{
-    // hado khashom itqado baqi masalithom
-    $_SESSION['wrongData']='check your informations';
+  
+    $_SESSION['Error']='check your informations';
     header('location: .././pages/signup.php');
 }
 }
@@ -101,15 +102,15 @@ function saveCategorie(){
         if($numCat == 0){
             $sql = "INSERT INTO categorie (Label) VALUES ('$name')";
             $result = mysqli_query($connection,$sql);
-            $_SESSION['addcateg'] = 'has beeen added successfully';
+            $_SESSION['correct'] = 'has beeen added successfully';
             header('location: .././pages/home.php');
         }else{
-            $_SESSION['addcateg'] = 'this categorie is already exist';
+            $_SESSION['Error'] = 'this categorie is already exist';
             header('location: .././pages/home.php');
         }        
     }
     else{
-        $_SESSION['addcateg']='check your informations';
+        $_SESSION['Error']='check your informations';
         header('location: .././pages/home.php');
     }
 }
@@ -134,6 +135,60 @@ function getGames(){
    return $dataProduit;
 }
 
+
+//************* function for upload Image this function return name of image  ****************/
+function uploadimage()
+{
+	 if (isset($_FILES['my_image']['name']))
+   {
+        global $connection;
+
+		// echo "<pre>";
+		// print_r($_FILES['my_image']);
+		// echo "</pre>";
+		$img_name = $_FILES['my_image']['name'];
+		$img_size = $_FILES['my_image']['size'];
+		$tmp_name = $_FILES['my_image']['tmp_name'];
+		$error = $_FILES['my_image']['error'];
+
+		    if ($error === 0)
+			{
+				if ($img_size > 125000) 
+				{
+                    $_SESSION['Error'] = "Sorry, your file is too large.";
+                     header('location: .././pages/home.php');
+				}
+				else
+				{
+					$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);// return extension of image
+					$img_ex_lc = strtolower($img_ex);
+
+					$allowed_exs = array("jpg", "jpeg", "png"); 
+
+						if (in_array($img_ex_lc, $allowed_exs)) 
+						{
+							$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+							$img_upload_path = '../Assets/img/uploads/'.$new_img_name;
+							move_uploaded_file($tmp_name, $img_upload_path);
+						}
+                        else {
+                            $_SESSION['Error'] = "You can't upload files of this type";
+                            header('location: .././pages/home.php'); 
+                        }
+				}
+				}
+		    else
+            {
+                $_SESSION['Error'] = 'unknown error occurred!';
+                header('location: .././pages/home.php'); 
+				
+			}
+	}
+    return $new_img_name;
+}
+		
+
+
 //************ function for add Product **************/
 function saveGames(){
     global $connection;
@@ -142,22 +197,23 @@ function saveGames(){
     $description =htmlspecialchars(trim($_POST['description']));
     $price =is_numeric($_POST['price']);
     $Qnt =htmlspecialchars(trim($_POST['Qnt']));
-    if(!empty($categorie)&&!empty($title)&&!empty($description)&&!empty($price)&&!empty($Qnt))
+    $imagename = uploadimage() ;
+    if(!empty($categorie)&&!empty($title)&&!empty($description)&&!empty($imagename)&&!empty($price)&&!empty($Qnt))
     {
-        $idadmin= $_SESSION['idadmin'];
+            $idadmin= $_SESSION['idadmin'];
             $datacat=getCategories();
             foreach ($datacat as $cat) {
                 if($cat['Label']===$categorie){
                     $catSend = $cat['Id'];
                 }
             }
-            $sql = "INSERT INTO product (Id_cate,Titel,Description,Price,Quntite,Id_admin) VALUES ('$catSend','$title' , '$description' ,'$price','$Qnt','$idadmin')";
+            $sql = "INSERT INTO product (Image,Id_cate,Titel,Description,Price,Quntite,Id_admin) VALUES ('$imagename','$catSend','$title' , '$description' ,'$price','$Qnt','$idadmin')";
             $result = mysqli_query($connection,$sql);
-            $_SESSION['addcateg'] = 'has beeen added successfully';
+            $_SESSION['correct'] = 'has beeen added successfully';
             header('location: .././pages/home.php');  
     }
     else{
-        $_SESSION['addcateg']='check your informations';
+        $_SESSION['Error']='check your informations';
         header('location: .././pages/home.php');
     }
 }

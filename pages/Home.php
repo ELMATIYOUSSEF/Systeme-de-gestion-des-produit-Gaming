@@ -10,22 +10,28 @@ include('../includes/header.php')?>
             </div>
             <div class="col-9 d-flex flex-column justify-content-center align-items-center text-center g-5 ">
                 <div class="container">
-                <?php if (isset($_SESSION['addcateg'])): ?>
-                   <?php if( $_SESSION['addcateg']== "this categorie is already exist"): ?>
+                <?php if (isset($_SESSION['Error'])): ?>
+                   
 				<div class="alert alert-danger alert-dismissible fade show">
                 <strong>Erorr!</strong>
-                   <?php endif ?>
-                   <?php if( $_SESSION['addcateg']== "has beeen added successfully"): ?>
-				<div class="alert alert-success alert-dismissible fade show">
-                <strong>excellent</strong>
-                   <?php endif ?>
-					<?php 
-						echo $_SESSION['addcateg']; 
-						unset($_SESSION['addcateg']);
+                <?php 
+						echo $_SESSION['Error']; 
+						unset($_SESSION['Error']);
 					?>
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
 				</div>
-			<?php endif ?>
+			    <?php endif ?>
+                   
+                <?php if (isset($_SESSION['correct'])): ?>       
+				<div class="alert alert-success alert-dismissible fade show">
+                <strong>excellent</strong>
+					<?php 
+						echo $_SESSION['correct']; 
+						unset($_SESSION['correct']);
+					?>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+				</div>
+			    <?php endif ?>
                     <h1>Welcome</h1>
                     <h2><?php echo $_SESSION['name']; ?></h2>
                     <h4>voulez-vous ajouter</h4>
@@ -68,7 +74,7 @@ include('../includes/header.php')?>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="../config/scripts.php" method="post">
+        <form action="../config/scripts.php" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="Categorie" class="col-form-label">Categorie :</label>
                 <select class="form-select"name="Categorie" id="Categorie" aria-label="Default select example">
@@ -98,12 +104,12 @@ include('../includes/header.php')?>
                 <input type="text" name="price"  class="form-control" id="price">
             </div>
             <div class="mb-3">
-                <label for="qnt" class="col-form-label">Quntite :</label>
+                <label for="qnt" class="col-form-label">Quantity :</label>
                 <input type="text" name="Qnt"  class="form-control" id="qnt">
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Ajoute un Image :</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" name="my_image" type="file" id="formFile">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
