@@ -79,7 +79,8 @@ include('../includes/header.php')?>
                 <label for="Categorie" class="col-form-label">Categorie :</label>
                 <select class="form-select"name="Categorie" id="Categorie" aria-label="Default select example">
                 <?php 
-                    $data = getCategories() ;
+                $table = 'categorie';
+                    $data = getdata($table) ;
                     foreach ($data as $cat) {
                         echo "<option name=".$cat['Id']." >$cat[Label]</option>";
                     }

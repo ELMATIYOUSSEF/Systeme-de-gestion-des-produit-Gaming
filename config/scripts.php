@@ -1,25 +1,37 @@
 <?php
-
-//********* function for check is user of application is admin or not  ************/
-function checkisadmin()
-{
-    if($_SESSION['name']== ''){
-        header("Location:../index.php");
-    }
-}
-
 //INCLUDE DATABASE FILE
 include ('connection.php');
 
 //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
 session_start();
 
+//********* function for check is user of application is admin or not  ************/
+function checkisadmin()
+{
+    if($_SESSION['name']== '') header("Location:../index.php");
+}
+
+
 //ROUTING
 if(isset($_POST['SignIn'])) SignIn();
 if(isset($_POST['SignUp'])) SignUp();
 if(isset($_POST['saveCategorie'])) saveCategorie();
 if(isset($_POST['addProduit'])) saveGames();
+if(isset($_POST['updatePass'])) updatePassword();
+if(isset($_GET['logOut'])) LogOut();
+if(isset($_GET['id'])) $_SESSION['idProductDelete'] =$_GET['id'];
+if(isset($_POST['idForDelete'])){
+    $id = $_POST['idForDelete'];
+    $table='product';
+    delete($table,$id);
+} 
 
+
+// function LogOut()
+function LogOut(){
+    session_destroy();
+    header('location: ../index.php ');
+}
  
 //page login
 //********* function SignIn  ************/
@@ -114,26 +126,6 @@ function saveCategorie(){
         header('location: .././pages/home.php');
     }
 }
-//************* function for get all categorie from table categorie **********/
-function getCategories(){
-    global $connection;
-         $sql = "SELECT * FROM categorie";
-        $result = mysqli_query($connection,$sql);
-        $dataCat = array();
-        while($row = mysqli_fetch_assoc($result))
-             $dataCat[] = $row;
-        return $dataCat;
-}
-//************ function for get all product from table product ************/
-function getGames(){
-    global $connection;
-    $sql = "SELECT * FROM product";
-   $result = mysqli_query($connection,$sql);
-   $dataProduit = array();
-   while($row = mysqli_fetch_assoc($result))
-        $dataProduit[] = $row;
-   return $dataProduit;
-}
 
 
 //************* function for upload Image this function return name of image  ****************/
@@ -153,7 +145,7 @@ function uploadimage()
 
 		    if ($error === 0)
 			{
-				if ($img_size > 125000) 
+				if ($img_size > 170000) 
 				{
                     $_SESSION['Error'] = "Sorry, your file is too large.";
                      header('location: .././pages/home.php');
@@ -185,9 +177,7 @@ function uploadimage()
 			}
 	}
     return $new_img_name;
-}
-		
-
+}		
 
 //************ function for add Product **************/
 function saveGames(){
@@ -195,13 +185,14 @@ function saveGames(){
     $categorie =htmlspecialchars(trim($_POST['Categorie']));
     $title =htmlspecialchars(trim($_POST['title']));
     $description =htmlspecialchars(trim($_POST['description']));
-    $price =is_numeric($_POST['price']);
+    $price =trim($_POST['price']);
     $Qnt =htmlspecialchars(trim($_POST['Qnt']));
     $imagename = uploadimage() ;
     if(!empty($categorie)&&!empty($title)&&!empty($description)&&!empty($imagename)&&!empty($price)&&!empty($Qnt))
     {
             $idadmin= $_SESSION['idadmin'];
-            $datacat=getCategories();
+            $table='categorie';
+            $datacat=getdata($table);
             foreach ($datacat as $cat) {
                 if($cat['Label']===$categorie){
                     $catSend = $cat['Id'];
@@ -217,5 +208,75 @@ function saveGames(){
         header('location: .././pages/home.php');
     }
 }
+
+
+function updatePassword()
+{
+    global $connection;
+
+    $email=$_POST['UEmail'];
+    $password=$_POST['UPassword'];
+    $Newpassword =$_POST['UNewPassword'];
+
+    $sql = "SELECT * FROM admin WHERE Email='$email'";
+    $result = mysqli_query($connection,$sql);
+    $numAccount = mysqli_num_rows($result);
+    $row = mysqli_fetch_assoc($result);
+
+    if($numAccount==1){
+       
+            if (password_verify($password, $row['PassWord'])) 
+            {
+                $hachPass = htmlspecialchars(trim(password_hash($_POST['UNewPassword'], PASSWORD_BCRYPT)));
+               
+                $req = "UPDATE admin SET `PassWord` = '$hachPass' WHERE `Id` = '".$_SESSION['idadmin'] ."'";
+                $result = mysqli_query($connection,$req);
+                if($result==true){
+                $_SESSION['correct'] = 'Your Password has beeen Up-date  successfully';
+                header('location: .././pages/profile.php');
+                }
+                else{
+                    echo('hayi');
+                    print($hachPass);
+                    print_r($row);
+                    die();
+                }
+            }
+            else{
+                $_SESSION['Error']='check your Password unccorect';
+                header('location: .././pages/profile.php');
+            }
+    }
+    else{
+        $_SESSION['Error']='check your informations';
+        header('location: .././pages/profile.php');
+    }
+
+}
+
+
+//************* function for get all data from variable table  **********/
+
+function getdata($table){
+    global $connection;
+    $sql = "SELECT * FROM $table";
+   $result = mysqli_query($connection,$sql);
+   $data = array();
+   while($row = mysqli_fetch_assoc($result))
+        $data[] = $row;
+   return $data;
+}
+
+
+//************* function delete   **********/
+
+function delete($table , $id){
+    global $connection;
+    $sql = "DELETE FROM $table where id =$id";
+   $result = mysqli_query($connection,$sql);
+   $_SESSION['correct'] = 'Your Product has beeen deleted successfully';
+   header('location: .././pages/Product.php');
+}
+
 
 ?>
