@@ -21,6 +21,7 @@ include('../includes/header.php')
                         <th scope="col">UserName</th>
                         <th scope="col">Email</th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,11 @@ include('../includes/header.php')
                     $table='admin';
                       $data = getdata($table);
                       foreach ($data as $prduct) {
+                        $id = check();
+                        if($id ==$prduct['Id']){
+                            $check = "checked";
+                        }
+                        else $check ="";
                           echo '<tr>
                           <th scope="row"></th>
                           <th scope="row">'.$prduct['Id'].'</th>
@@ -36,6 +42,7 @@ include('../includes/header.php')
                           <td>'.$prduct['Email'].' DH</td>
                           <td><a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success ">Edit</a>
                           <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-danger ">delete</a></td>
+                          <td><input type="radio"'.$check.' ></td>
                         </tr>';
                       }
                     ?>     
@@ -46,4 +53,12 @@ include('../includes/header.php')
             </div>
             
     </div>
-<?php include('../includes/footer.php')?>
+<?php include('../includes/footer.php');
+function check(){
+if($_SESSION['idadmin']){
+    $id = $_SESSION['idadmin'] ;
+return $id ;
+}
+}
+
+?>

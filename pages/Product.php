@@ -83,7 +83,7 @@
       </div>
       <div class="modal-body">
         <form action="../config/scripts.php" method="post">
-          <input type="text" name="idForDelete" class="inputH" >
+          <input type="hidden" name="idForDelete" class="inputH" >
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" name="deletP"  class="btn btn-danger">delete</button>
         </form>
