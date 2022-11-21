@@ -29,6 +29,11 @@ if(isset($_POST['idForDelete'])){
 
 // function LogOut()
 function LogOut(){
+    global $connection;
+    $status = 'O';
+    $id =$_SESSION['idadmin'];
+    $sql = "UPDATE admin SET status = '$status' WHERE id ='$id'";
+                $result = mysqli_query($connection,$sql);
     session_destroy();
     header('location: ../index.php ');
 }
@@ -51,7 +56,11 @@ function SignIn(){
     {
         if($row['Email'] == $email)
             {
-                $_SESSION['idadmin'] = $row['Id'];
+                $id = $row['Id'];
+                $status = 1;
+                $sql = "UPDATE admin SET status = '$status' WHERE id ='$id'";
+                $result = mysqli_query($connection,$sql);
+                $_SESSION['idadmin'] = $id;
                 $_SESSION['name']=$row['Name'];
                 header('location: .././pages/home.php');
             }

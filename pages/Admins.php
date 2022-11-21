@@ -21,28 +21,32 @@ include('../includes/header.php')
                         <th scope="col">UserName</th>
                         <th scope="col">Email</th>
                         <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
                     <?php 
                     $table='admin';
                       $data = getdata($table);
-                      foreach ($data as $prduct) {
-                        $id = check();
-                        if($id ==$prduct['Id']){
-                            $check = "checked";
+                      foreach ($data as $admin) {
+                        if($admin['status'] == 1){
+                            $staus = "connecte";
+                            $clr ="success";
                         }
-                        else $check ="";
+                        else{
+                            $staus = "deconnecte";
+                            $clr="danger";
+                        }
+                        
                           echo '<tr>
                           <th scope="row"></th>
-                          <th scope="row">'.$prduct['Id'].'</th>
-                          <td>'.$prduct['Name'].'</td>
-                          <td>'.$prduct['UserName'].'</td>
-                          <td>'.$prduct['Email'].' DH</td>
-                          <td><a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success ">Edit</a>
-                          <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-danger ">delete</a></td>
-                          <td><input type="radio"'.$check.' ></td>
+                          <th scope="row">'.$admin['Id'].'</th>
+                          <td>'.$admin['Name'].'</td>
+                          <td>'.$admin['UserName'].'</td>
+                          <td>'.$admin['Email'].' DH</td>
+                          <td><a href="Product.php?id='.$admin['Id'].'" type="button" class="btn btn-success ">Edit</a>
+                          <a href="Product.php?id='.$admin['Id'].'" type="button" class="btn btn-danger ">delete</a></td>
+                          <td><button class="btn btn-'.$clr.' " type="button" >'.$staus.' </button></td>
                         </tr>';
                       }
                     ?>     
