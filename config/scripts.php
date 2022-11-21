@@ -19,11 +19,18 @@ if(isset($_POST['saveCategorie'])) saveCategorie();
 if(isset($_POST['addProduit'])) saveGames();
 if(isset($_POST['updatePass'])) updatePassword();
 if(isset($_GET['logOut'])) LogOut();
-if(isset($_GET['id'])) $_SESSION['idProductDelete'] =$_GET['id'];
-if(isset($_POST['idForDelete'])){
+// if(isset($_GET['id'])) $_SESSION['idProductDelete'] =$_GET['id'];
+if(isset($_POST['deletP'])){
     $id = $_POST['idForDelete'];
     $table='product';
-    delete($table,$id);
+    $page='Product';
+    delete($table,$id,$page);
+} 
+if(isset($_POST['deletadmin'])){
+    $id = $_POST['idForDelete'];
+    $page='Admins';
+    $table='admin';
+    delete($table,$id,$page);
 } 
 
 
@@ -279,13 +286,14 @@ function getdata($table){
 
 //************* function delete   **********/
 
-function delete($table , $id){
+function delete($table , $id ,$page){
     global $connection;
     $sql = "DELETE FROM $table where id =$id";
    $result = mysqli_query($connection,$sql);
    $_SESSION['correct'] = 'Your Product has beeen deleted successfully';
-   header('location: .././pages/Product.php');
+   header('location: .././pages/'.$page.'.php');
 }
+
 
 
 ?>
