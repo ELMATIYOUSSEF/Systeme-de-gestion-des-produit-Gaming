@@ -1,9 +1,12 @@
 <?php 
       include('../config/scripts.php');
-      $title="Admin";
+      $title="Product";
       checkisadmin();
-      include('../includes/header.php');
-      
+      include('../includes/header.php'); 
+      $TitleModel = 'Update' ;
+     $savehidden='hidden';
+     $updatehidden ='';
+include('../includes/model.php');
 ?>
 
     <div class="row">
@@ -13,6 +16,7 @@
       </div>
       <div class="col-9 container d-flex justify-content-center align-items-center">
             <div class="col py-3">
+            <input type="hidden" name="idForUpdate" class="idForUpdate" >
                 <table class="table pt-5">
                     <thead>
                       <tr>
@@ -43,8 +47,8 @@
                           <td>'.$prduct['Price'].' DH</td>
                           <td>'.$prduct['Quntite'].'</td>
                           <td>
-                          <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success " id="Edit_Product">Edit</a>
-                          <a href="Product.php?id='.$prduct['Id'].'" type="button" onclick="Edit_Product('.$prduct['Id'].')" data-bs-toggle="modal" id="delete_Product" data-bs-target="#exampleModal" class="btn btn-danger ">delete</a></td>
+                         <button type="submit" name="Edit_Btn" onclick="remplairmodel('.$prduct['Id'].')"> <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success " data-bs-toggle="modal" id="delete_Product" data-bs-target="#addGame" class="btn btn-danger ">Edit</a> </button>
+                          <a href="Product.php?id='.$prduct['Id'].'" type="button" onclick="deletProduct('.$prduct['Id'].')" data-bs-toggle="modal" id="delete_Product" data-bs-target="#exampleModal" class="btn btn-danger ">delete</a></td>
                         </tr>';
                       }
                     ?>     
@@ -91,12 +95,39 @@
     </div>
   </div>
 </div>
-<?php include('../includes/footer.php');
+<?php
+include('../includes/footer.php');
 ?>
+<script
+  src="https://code.jquery.com/jquery-3.6.1.js"
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+  crossorigin="anonymous"></script>
 <script>
- function Edit_Product(id){
+ function deletProduct(id){
   console.log(id);
    document.querySelector(".inputH").value = id;
-}
+  };
+  function remplairmodel(id){
+    console.log(id);
+    document.querySelector(".idForUpdate").value = id;
+    $.ajax({
+
+      type : "POST",
+      url : "../config/scripts.php",
+      data :{openTask : id},
+      success: function (obj)
+      {
+        console.log(obj);
+        document.querySelector("#Categorie").value = obj[3];
+        document.querySelector("#id_admin").value =  obj[8];
+        document.querySelector("#title").value = obj[4];
+        document.querySelector("#description").value = obj[5] ;
+        document.querySelector("#price").value = obj[6];
+        document.querySelector("#qnt").value = obj[7];
+      }
+
+    });
+  }
 
 </script>
+ 

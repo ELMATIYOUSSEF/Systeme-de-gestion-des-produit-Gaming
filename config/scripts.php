@@ -32,7 +32,35 @@ if(isset($_POST['deletadmin'])){
     $table='admin';
     delete($table,$id,$page);
 } 
+if(isset($_POST['openTask'])) remplair($_POST['openTask']);
 
+//function for fill model
+function remplair($id){
+    header('content-Type: application/json');
+    global $connection;
+    $data = array();
+    $sql = "SELECT p.*, categorie.Id as idcat , categorie.Label as namecat  from  product p INNER JOIN categorie on categorie.Id = p.Id_cate where p.Id = $id";
+   $result = mysqli_query($connection,$sql);
+   $row= mysqli_num_rows($result);
+   if($result){
+    if($row>0){
+        while($row = mysqli_fetch_array ($result)){
+        $data[0]= $row['Id'];
+        $data[1]= $row['Image'];
+        $data[2]= $row['idcat'];
+        $data[3]= $row['namecat'];
+        $data[4]= $row['Titel'];
+        $data[5]= $row['Description'];
+        $data[6]= $row['Price'];
+        $data[7]= $row['Quntite'];
+        $data[8]= $row['Id_admin'];
+    }
+    }
+
+   }
+
+    echo json_encode($data);
+   }
 
 // function LogOut()
 function LogOut(){
