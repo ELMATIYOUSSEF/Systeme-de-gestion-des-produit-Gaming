@@ -39,21 +39,9 @@ include('../includes/header.php')
                         }
                         
                           echo '<tr>
+                          
                           <th scope="row"></th>
-<<<<<<< HEAD
-                          <th scope="row">'.$prduct['Id'].'</th>
-                          <td>'.$prduct['Name'].'</td>
-                          <td>'.$prduct['UserName'].'</td>
-                          <td>'.$prduct['Email'].'</td>
-                          <td>  </td>
-                          <td>
-                          <a href="Product.php?id='.$prduct['Id'].'" type="button" ><lord-icon src="https://cdn.lordicon.com/hbigeisx.json" trigger="hover" colors="primary:#00FF00" style="width:25px;height:25px">
-                          </lord-icon></a>
-                          <a href="Product.php?id='.$prduct['Id'].'" type="button" > <lord-icon src="https://cdn.lordicon.com/kfzfxczd.json" trigger="hover" colors="primary:#FF0000" style="width:25px;height:25px" >
-                          </lord-icon></a></td>
-                          <td><input type="radio"'.$check.' ></td>
-=======
-                          <th scope="row">'.$admin['Id'].'</th>
+                          <td> '.$admin['Id'].' </td>
                           <td>'.$admin['Name'].'</td>
                           <td>'.$admin['UserName'].'</td>
                           <td>'.$admin['Email'].'</td>
@@ -61,7 +49,6 @@ include('../includes/header.php')
                           <a href="Admins.php?id='.$admin['Id'].'"><lord-icon src="https://cdn.lordicon.com/kfzfxczd.json" trigger="hover" colors="primary:#c71f16" style="width:32px;height:32px"> </lord-icon></a> 
                           </td>
                           <td><button class="btn btn-'.$clr.' " type="button" >'.$staus.' </button></td>
->>>>>>> 2e713411374ae59a9c0af0e6594bdaabf164f999
                         </tr>';
                       }
                     ?>     
