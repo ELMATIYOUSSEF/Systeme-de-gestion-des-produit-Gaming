@@ -39,9 +39,13 @@ include('../includes/header.php')
                           <th scope="row">'.$prduct['Id'].'</th>
                           <td>'.$prduct['Name'].'</td>
                           <td>'.$prduct['UserName'].'</td>
-                          <td>'.$prduct['Email'].' DH</td>
-                          <td><a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success ">Edit</a>
-                          <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-danger ">delete</a></td>
+                          <td>'.$prduct['Email'].'</td>
+                          <td>  </td>
+                          <td>
+                          <a href="Product.php?id='.$prduct['Id'].'" type="button" ><lord-icon src="https://cdn.lordicon.com/hbigeisx.json" trigger="hover" colors="primary:#00FF00" style="width:25px;height:25px">
+                          </lord-icon></a>
+                          <a href="Product.php?id='.$prduct['Id'].'" type="button" > <lord-icon src="https://cdn.lordicon.com/kfzfxczd.json" trigger="hover" colors="primary:#FF0000" style="width:25px;height:25px" >
+                          </lord-icon></a></td>
                           <td><input type="radio"'.$check.' ></td>
                         </tr>';
                       }
