@@ -175,10 +175,9 @@ function saveCategorie(){
 //************* function for upload Image this function return name of image  ****************/
 function uploadimage()
 {
-	 if (isset($_FILES['my_image']['name']))
+	 if (isset($_FILES['my_image']))
    {
         global $connection;
-
 		// echo "<pre>";
 		// print_r($_FILES['my_image']);
 		// echo "</pre>";
