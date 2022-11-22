@@ -88,3 +88,11 @@ strong{
 #sizeImage{
     max-width: 40px;
 }
+/* footer */
+.footer--center{
+    margin-left: 22rem;
+}
+
+@media screen and (max-width: 820px){
+
+}
