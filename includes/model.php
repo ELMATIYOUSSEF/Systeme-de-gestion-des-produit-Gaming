@@ -43,7 +43,7 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Ajoute un Image :</label>
-                <input class="form-control" name="my_image" type="file" id="formFile">
+                <input class="form-control" name="my_image" type="file" id="formFile" require>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

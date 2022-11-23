@@ -9,9 +9,10 @@ include('../includes/header.php')?>
             <div class="col-3 ">
             <?php include('../includes/sidebar.php')?>
             </div>
-            <div class="col-9 d-flex justify-content-center align-items-center">
-            
-                 <form class="row container d-flex justify-content-center align-items-center  " action="../config/scripts.php" method="post">
+            <div class="col-9">
+            <h3 class =" container  ps-4 pt-5 pb-5">Pages <span>/</span> Profile</h3> 
+                <div class="d-flex justify-content-center align-items-center pt-5">
+                 <form class="row container d-flex justify-content-center align-items-center pt-5 " action="../config/scripts.php" method="post">
 
                  <?php if (isset($_SESSION['Error'])): ?>
                    
@@ -53,10 +54,8 @@ include('../includes/header.php')?>
                         <button type="submit" name="updatePass" class="btn btn-primary">Edit</button>
                     </div>
                   </form>
+                   </div>
             </div>
-        <footer class="fixed-bottom ">
-        <div class="text-center footer--center "><h3> 	&copy; 2022 YouCode - All Rights Reserved</h3></div>
-        </footer>
             
     </div>
    

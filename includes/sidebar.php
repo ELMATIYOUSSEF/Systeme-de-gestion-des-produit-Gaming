@@ -14,7 +14,7 @@
                                 colors="primary:#fff"
                                 style="width:32px;height:32px">
                             </lord-icon>
-                            <span class="nav-item">Home </span>
+                            <span class="nav-item side-bar-hidden">Home </span>
                         </a>
                     </li>
 
@@ -25,7 +25,7 @@
                                 colors="primary:#fff"
                                 style="width:32px;height:32px">
                             </lord-icon>
-                            <span class="nav-item">Profile </span>
+                            <span class="nav-item side-bar-hidden">Profile </span>
                         </a>
                     </li>
 
@@ -36,7 +36,7 @@
                             colors="primary:#fff"
                             style="width:32px;height:32px">
                              </lord-icon>
-                            <span class="nav-item">Product </span>
+                            <span class="nav-item side-bar-hidden">Product </span>
                         </a>
                     </li>
 
@@ -47,13 +47,13 @@
                     colors="primary:#fff"
                     style="width:32px;height:32px">
                      </lord-icon>
-                        <span class="nav-item">Admins </span>
+                        <span class="nav-item side-bar-hidden">Admins </span>
                     </a>
                 </li>
                 
                     <li  class=" text-center py-1 text-uppercase fs-3  fw-bold font-monospace  list-group-item list-group-item-danger btn btn-secondary logout "><a href="../config/scripts.php?logOut=1"  name="logOut" class="text-decoration-none text-white">
                             <i class="fas fa-sign-out-alt"></i>
-                            <span class="nav-item"> Log out </span>
+                            <span class="nav-item side-bar-hidden"> Log out </span>
                         </a>
                     </li>
                 </ul>

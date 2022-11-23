@@ -3,7 +3,15 @@
 include('../config/scripts.php');
 checkisadmin(); 
 $title= "home";
-include('../includes/header.php')?>
+include('../includes/header.php') ;
+ $sql="select count('Id') as Cadmin from admin";
+$countadmin =Statistic($sql) ;
+$sql1="SELECT AVG( FORMAT( CAST( product.Price AS DECIMAL(9,6)), 'g18')) as Moyenne FROM product;";
+$moyenTotalPrixProduct =Statistic($sql1) ;
+$sql2="select count('Id') as Cproduct from product";
+$countproduct =Statistic($sql2) ;
+
+?>
     <div class="row">
             <div class="col-3 ">
             <?php include('../includes/sidebar.php')?>
@@ -11,6 +19,7 @@ include('../includes/header.php')?>
             <div class="col-9">
                  
             <div class="container"> 
+            <h3 class ="pt-5">Pages <span>/</span> Home</h3> 
                 <!-- start sesstion -->
                 <?php if (isset($_SESSION['Error'])): ?>
                    
@@ -40,49 +49,76 @@ include('../includes/header.php')?>
                     <h1><?php echo $_SESSION['name']; ?></h1>
                 </div>
 
-                <div class="d-flex gap-5 justify-content-center align-items-center text-center  pt-5">
-                    <div class="card w-25 ">
-                        <h5 class="card-header text-center">Admin</h5>
-                        <div class="card-body d-flex   bg-primary p-2 text-white bg-opacity-75 justify-content-around align-items-center  ">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <lord-icon
-                                src="https://cdn.lordicon.com/bhfjfgqz.json"
-                                trigger="hover"
-                                colors="primary:#2516c7"
-                                style="width:35px;height:35px">
-                            </lord-icon>
-                        </div>
+                <div class="row row-cols-1 row-cols-md-4 g-4 gap-3 text-center">
+                    <div class="col">
+                            <div class="card ">
+                            <h5 class="card-header text-center">Admin</h5>
+                            <div class="card-body d-flex   bg-primary p-2 text-white bg-opacity-100 justify-content-around align-items-center  ">
+                                <h1 class="card-title"><?= $countadmin['Cadmin'] ?></h1>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/bhfjfgqz.json"
+                                    trigger="hover"
+                                    colors="primary:#fff"
+                                    style="width:80px;height:80px">
+                                </lord-icon>
+                            </div>
+                            </div>
                     </div>
-                    <div class="card w-25">
-                        <h5 class="card-header text-center">Produit</h5>
-                        <div class="card-body bg-warning p-2 text-white bg-opacity-75 d-flex bg-success p-2 text-white bg-opacity-75 justify-content-around align-items-center  ">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <lord-icon
-                                src="https://cdn.lordicon.com/bhfjfgqz.json"
-                                trigger="hover"
-                                colors="primary:#2516c7"
-                                style="width:35px;height:35px">
-                            </lord-icon>
+                    <div class="col ">
+                        <div class="card ">
+                            <h5 class="card-header text-center">Produit</h5>
+                            <div class="card-body bg-warning p-2 text-white bg-opacity-100 d-flex bg-success p-2 text-white bg-opacity-75 justify-content-around align-items-center  ">
+                                <h1 class="card-title"><?=  $countproduct['Cproduct'] ?></h1>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/tyvtvbcy.json"
+                                    trigger="hover"
+                                    colors="primary:#fff"
+                                    style="width:80px;height:80px">
+                                </lord-icon>
+                            </div>
                         </div>
+                    
                     </div>
-                    <div class="card w-25">
+
+                    <div class="col">
+                    <div class="card ">
                         <h5 class="card-header text-center">Total </h5>
-                        <div class="card-body bg-success p-2 text-white bg-opacity-75 d-flex  justify-content-around align-items-center  ">
-                            <h5 class="card-title">Special title treatment</h5>
+                        <div class="card-body bg-success p-2 text-white bg-opacity-100 d-flex  justify-content-around align-items-center  ">
+                            <h1 class="card-title"><?= $moyenTotalPrixProduct['Moyenne'] ?></h1>
                             <lord-icon
-                                src="https://cdn.lordicon.com/bhfjfgqz.json"
+                                src="https://cdn.lordicon.com/qtldxoay.json"
                                 trigger="hover"
-                                colors="primary:#2516c7"
-                                style="width:35px;height:35px">
+                                colors="primary:#fff"
+                                style="width:80px;height:80px">
                             </lord-icon>
                         </div>
                     </div>
+                    </div>
+                    
                  </div> 
                    
                     <h4 class="pt-5">voulez-vous ajouter</h4>
-                    <div class="text-center pt-3">
-                        <button type="button" name="addcategorie" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Categorie</button>
-                        <button type="button" name="addgames" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#addGame">Games</button>
+                    <div class="text-center d-grid pt-3">
+                        <div class="card">
+                                <div class="card-header">
+                                Warning 1 !!
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"> Click in Button Categorie if you want to add category </h5>
+                                    <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                                </div>
+                        </div>
+                        <button type="button" name="addcategorie" class="btn btn-primary mt-3 p-2 pt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Categorie</button>
+                        <div class="card">
+                                <div class="card-header">
+                                Warning 1 !!
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Click in Button Produit  if you want to add Product</h5>
+                                    <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                                </div>
+                        </div>
+                        <button type="button" name="addgames" class="btn btn-primary p-2 mt-3 pt-3" data-bs-toggle="modal" data-bs-target="#addGame">Produit </button>
                     </div>
                 </div>
             </div>    

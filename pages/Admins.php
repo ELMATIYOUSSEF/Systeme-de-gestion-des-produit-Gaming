@@ -9,8 +9,10 @@ include('../includes/header.php')
             <div class="col-3 ">
             <?php include('../includes/sidebar.php')?>
             </div>
-            <div class="col-9 d-flex justify-content-center align-items-center">
-            <div class="col py-3">
+            <div class="col-9 ">
+            <h3 class ="container ps-5 pt-5 pb-5">Pages <span>/</span> Admins</h3> 
+            <div class="d-flex justify-content-center align-items-center pt-5">
+            <div class="col py-3 table-responsive">
             <button type="button" class="hiddenButton"data-bs-toggle="modal"  data-bs-target="#exampleModal" class="btn btn-danger " hidden></button>
                 <table class="table pt-5">
                     <thead>
@@ -57,7 +59,7 @@ include('../includes/header.php')
                     </tbody>
                   </table>
             </div>
-            
+          </div>
     </div>
 
 <!-- delete admin  -->

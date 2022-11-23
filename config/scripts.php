@@ -8,7 +8,7 @@ session_start();
 //********* function for check is user of application is admin or not  ************/
 function checkisadmin()
 {
-    if($_SESSION['name']== '') header("Location:../index.php");
+    if($_SESSION['name']== '') header("Location:../pages/login.php");
 }
 
 
@@ -71,7 +71,7 @@ function LogOut(){
     $sql = "UPDATE admin SET status = '$status' WHERE id ='$id'";
                 $result = mysqli_query($connection,$sql);
     session_destroy();
-    header('location: ../index.php ');
+    header('location: ../pages/login.php ');
 }
  
 //page login
@@ -98,19 +98,19 @@ function SignIn(){
                 $result = mysqli_query($connection,$sql);
                 $_SESSION['idadmin'] = $id;
                 $_SESSION['name']=$row['Name'];
-                header('location: .././pages/home.php');
+                header('location: ../pages/Home.php');
             }
         else
             {
             $_SESSION['Vide'] = 'email is wrong';
-                header('location: ../index.php');
+                header('location: ../pages/login.php');
             }
     } 
     
     else
         {
         $_SESSION['Vide'] = 'password is wrong';
-        header('location: ../index.php');
+        header('location: ../pages/login.php');
         }  
 
 }
@@ -136,7 +136,7 @@ function SignUp(){
         $result = mysqli_query($connection,$sql);
 
         $_SESSION['correct'] = 'your account has beeen created successfully';
-        header('location: ../index.php');
+        header('location: ../pages/login.php');
     }else{
         $_SESSION['Error'] = 'this email is already exist';
         header('location: .././pages/signup.php');
@@ -345,5 +345,10 @@ function updateProduct(){
     header('location: .././pages/Product.php');
     }
 }
-
+//  *****************  function for statistic   ***************//
+function Statistic($sql){
+    global $connection;
+   $result = mysqli_query($connection,$sql);
+   return mysqli_fetch_assoc($result) ;
+}
 ?>

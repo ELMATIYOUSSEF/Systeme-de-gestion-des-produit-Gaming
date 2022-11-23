@@ -17,7 +17,7 @@ include('../includes/model.php');
       <div class="col-9 container ">
       <h3 class ="pt-5">Pages <span>/</span> Product</h3> 
          <div class="d-flex justify-content-center align-items-center">
-            <div class="col py-3 d-flex flex-column ">
+            <div class="col py-3 d-flex flex-column  table-responsive">
              <input type="hidden" name="idForUpdate" class="idForUpdate" >
                 <table class="table pt-5">
                     <thead>
@@ -28,6 +28,7 @@ include('../includes/model.php');
                         <th scope="col">Description</th>
                         <th scope="col">Price</th>
                         <th scope="col">Quantite</th>
+                        <th scope="col"></th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
@@ -49,7 +50,8 @@ include('../includes/model.php');
                           <td>'.$prduct['Price'].' DH</td>
                           <td>'.$prduct['Quntite'].'</td>
                           <td>
-                         <button name="Edit_Btn" onclick="remplairmodel('.$prduct['Id'].')"> <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success " data-bs-toggle="modal" id="delete_Product" data-bs-target="#addGame" class="btn btn-danger ">Edit</a> </button>
+                         <button name="Edit_Btn" onclick="remplairmodel('.$prduct['Id'].')"> <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success " data-bs-toggle="modal" id="delete_Product" data-bs-target="#addGame" class="btn btn-danger ">Edit</a> </button> </td>
+                         <td>
                           <a href="Product.php?id='.$prduct['Id'].'" type="button" onclick="deletProduct('.$prduct['Id'].')" data-bs-toggle="modal" id="delete_Product" data-bs-target="#exampleModal" class="btn btn-danger ">delete</a></td>
                         </tr>';
                       }

@@ -24,14 +24,14 @@ include('../config/scripts.php');
 <body>
 
 <?php
-$login="../index.php";
+$login="../pages/login.php";
 $signup = "../pages/signup.php";
 $img="../Assets/img/Red_Dragon_Logo-removebg-preview.png";
  include('../includes/navbar.php')?>
 
-<div class="row container d-flex  justify-content-between align-items-center pt-5 ">
+<div class="row container d-flex  justify-content-between align-items-center pt-5 formSinUp ">
             
-            <div class="col-6">
+            <div class="col-6 container">
                  <form class="row g-3 LoginForm " action="../config/scripts.php" method ="post" data-parsley-validate>
                  <?php if (isset($_SESSION['Error'])): ?>
 				<div class="alert alert-danger alert-dismissible fade show">
