@@ -54,6 +54,10 @@ include('../includes/header.php')?>
                     </div>
                   </form>
             </div>
+        <footer class="fixed-bottom ">
+        <div class="text-center footer--center "><h3> 	&copy; 2022 YouCode - All Rights Reserved</h3></div>
+        </footer>
             
     </div>
+   
 <?php include('../includes/footer.php')?>

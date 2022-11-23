@@ -8,8 +8,10 @@ include('../includes/header.php')?>
             <div class="col-3 ">
             <?php include('../includes/sidebar.php')?>
             </div>
-            <div class="col-9 d-flex flex-column justify-content-center align-items-center text-center g-5 ">
-                <div class="container">
+            <div class="col-9">
+                 
+            <div class="container"> 
+                <!-- start sesstion -->
                 <?php if (isset($_SESSION['Error'])): ?>
                    
 				<div class="alert alert-danger alert-dismissible fade show">
@@ -32,10 +34,53 @@ include('../includes/header.php')?>
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
 				</div>
 			    <?php endif ?>
+                <!-- end session -->
+                <div class="w-100 d-flex gap-5 justify-content-center align-items-center text-center pt-5">
                     <h1>Welcome</h1>
-                    <h2><?php echo $_SESSION['name']; ?></h2>
-                    <h4>voulez-vous ajouter</h4>
-                    <div class="">
+                    <h1><?php echo $_SESSION['name']; ?></h1>
+                </div>
+
+                <div class="d-flex gap-5 justify-content-center align-items-center text-center  pt-5">
+                    <div class="card w-25 ">
+                        <h5 class="card-header text-center">Admin</h5>
+                        <div class="card-body d-flex   bg-primary p-2 text-white bg-opacity-75 justify-content-around align-items-center  ">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/bhfjfgqz.json"
+                                trigger="hover"
+                                colors="primary:#2516c7"
+                                style="width:35px;height:35px">
+                            </lord-icon>
+                        </div>
+                    </div>
+                    <div class="card w-25">
+                        <h5 class="card-header text-center">Produit</h5>
+                        <div class="card-body bg-warning p-2 text-white bg-opacity-75 d-flex bg-success p-2 text-white bg-opacity-75 justify-content-around align-items-center  ">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/bhfjfgqz.json"
+                                trigger="hover"
+                                colors="primary:#2516c7"
+                                style="width:35px;height:35px">
+                            </lord-icon>
+                        </div>
+                    </div>
+                    <div class="card w-25">
+                        <h5 class="card-header text-center">Total </h5>
+                        <div class="card-body bg-success p-2 text-white bg-opacity-75 d-flex  justify-content-around align-items-center  ">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/bhfjfgqz.json"
+                                trigger="hover"
+                                colors="primary:#2516c7"
+                                style="width:35px;height:35px">
+                            </lord-icon>
+                        </div>
+                    </div>
+                 </div> 
+                   
+                    <h4 class="pt-5">voulez-vous ajouter</h4>
+                    <div class="text-center pt-3">
                         <button type="button" name="addcategorie" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Categorie</button>
                         <button type="button" name="addgames" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#addGame">Games</button>
                     </div>
@@ -120,5 +165,9 @@ include('../includes/header.php')?>
       </div>
     </div>
   </div>
+  <footer class="fixed-bottom ">
+        <div class="text-center footer--center "><h3> 	&copy; 2022 YouCode - All Rights Reserved</h3></div>
+</footer>
 </div>
+
 <?php include('../includes/footer.php')?>

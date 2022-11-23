@@ -78,13 +78,17 @@ include('../includes/header.php')
       </div>
     </div>
   </div>
+  <footer class="fixed-bottom ">
+        <div class="text-center footer--center "><h3> 	&copy; 2022 YouCode - All Rights Reserved</h3></div>
+</footer>
 </div>
+
 <?php
  include('../includes/footer.php');
 ?>
 <script>
-    let id = <?=$_GET['id']?>;
     <?php if(isset($_GET['id'])): ?>
+      let id = <?= $_GET['id'] ;?> 
    console.log(id);
    document.querySelector(".hiddenButton").click();
    document.querySelector(".inputH").value = id;

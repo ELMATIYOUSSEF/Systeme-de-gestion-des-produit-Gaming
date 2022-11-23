@@ -19,7 +19,6 @@ if(isset($_POST['saveCategorie'])) saveCategorie();
 if(isset($_POST['addProduit'])) saveGames();
 if(isset($_POST['updatePass'])) updatePassword();
 if(isset($_GET['logOut'])) LogOut();
-// if(isset($_GET['id'])) $_SESSION['idProductDelete'] =$_GET['id'];
 if(isset($_POST['deletP'])){
     $id = $_POST['idForDelete'];
     $table='product';
@@ -33,6 +32,7 @@ if(isset($_POST['deletadmin'])){
     delete($table,$id,$page);
 } 
 if(isset($_POST['openTask'])) remplair($_POST['openTask']);
+if(isset($_POST['UpProduit'])) updateProduct();
 
 //function for fill model
 function remplair($id){
@@ -54,6 +54,7 @@ function remplair($id){
         $data[6]= $row['Price'];
         $data[7]= $row['Quntite'];
         $data[8]= $row['Id_admin'];
+        $_SESSION['idupdate'] = $row['Id'];
     }
     }
 
@@ -113,9 +114,10 @@ function SignIn(){
         }  
 
 }
-//page signUp
 
+//page signUp
 //********* function SignUp ************/
+
 function SignUp(){
     global $connection;
     $name =htmlspecialchars(trim($_POST['Name']));
@@ -145,8 +147,10 @@ function SignUp(){
     header('location: .././pages/signup.php');
 }
 }
+
 //page Home 
 //********* function save categories  ************/
+
 function saveCategorie(){
     global $connection;
     $name =htmlspecialchars(trim($_POST['nameCategorie']));
@@ -252,6 +256,8 @@ function saveGames(){
     }
 }
 
+// page Profile
+ // ****************** function Update Password *********//
 
 function updatePassword()
 {
@@ -321,6 +327,23 @@ function delete($table , $id ,$page){
    header('location: .././pages/'.$page.'.php');
 }
 
+//************* function delete   **********/
 
+function updateProduct(){
+
+    global $connection;
+    $id_cat = $_POST['Categorie'];
+    $Titel = $_POST['title'];
+    $Description = $_POST['description'];
+    $Price = $_POST['price'];
+    $Quntite = $_POST['Qnt'];
+ 
+    $req = "UPDATE product SET Id_cate = '$id_cat', Titel ='$Titel' ,Description = '$Description',Price ='$Price' , Quntite ='$Quntite'  WHERE `Id` = '".$_SESSION['idupdate']  ."'";
+    $result = mysqli_query($connection,$req);
+    if($result==true){
+    $_SESSION['correct'] = 'Up-date  successfully';
+    header('location: .././pages/Product.php');
+    }
+}
 
 ?>

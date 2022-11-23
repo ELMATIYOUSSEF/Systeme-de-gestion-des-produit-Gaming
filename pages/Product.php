@@ -14,9 +14,11 @@ include('../includes/model.php');
       <div class="col-3 ">
         <?php include('../includes/sidebar.php')?>
       </div>
-      <div class="col-9 container d-flex justify-content-center align-items-center">
-            <div class="col py-3">
-            <input type="hidden" name="idForUpdate" class="idForUpdate" >
+      <div class="col-9 container ">
+      <h3 class ="pt-5">Pages <span>/</span> Product</h3> 
+         <div class="d-flex justify-content-center align-items-center">
+            <div class="col py-3 d-flex flex-column ">
+             <input type="hidden" name="idForUpdate" class="idForUpdate" >
                 <table class="table pt-5">
                     <thead>
                       <tr>
@@ -47,7 +49,7 @@ include('../includes/model.php');
                           <td>'.$prduct['Price'].' DH</td>
                           <td>'.$prduct['Quntite'].'</td>
                           <td>
-                         <button type="submit" name="Edit_Btn" onclick="remplairmodel('.$prduct['Id'].')"> <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success " data-bs-toggle="modal" id="delete_Product" data-bs-target="#addGame" class="btn btn-danger ">Edit</a> </button>
+                         <button name="Edit_Btn" onclick="remplairmodel('.$prduct['Id'].')"> <a href="Product.php?id='.$prduct['Id'].'" type="button" class="btn btn-success " data-bs-toggle="modal" id="delete_Product" data-bs-target="#addGame" class="btn btn-danger ">Edit</a> </button>
                           <a href="Product.php?id='.$prduct['Id'].'" type="button" onclick="deletProduct('.$prduct['Id'].')" data-bs-toggle="modal" id="delete_Product" data-bs-target="#exampleModal" class="btn btn-danger ">delete</a></td>
                         </tr>';
                       }
@@ -70,15 +72,16 @@ include('../includes/model.php');
                         <a class="page-link" href="#">Next</a>
                       </li>
                     </ul>
-                   </div>
+                </div>
                   
             </div>
+          </div>
       </div>
   
     </div>
 
     <!-- delete -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade align-self-end" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -94,7 +97,11 @@ include('../includes/model.php');
       </div>
     </div>
   </div>
+  <footer class="fixed-bottom ">
+        <div class="text-center footer--center "><h3> 	&copy; 2022 YouCode - All Rights Reserved</h3></div>
+</footer>
 </div>
+
 <?php
 include('../includes/footer.php');
 ?>
@@ -108,7 +115,7 @@ include('../includes/footer.php');
    document.querySelector(".inputH").value = id;
   };
   function remplairmodel(id){
-    console.log(id);
+    //console.log(id);
     document.querySelector(".idForUpdate").value = id;
     $.ajax({
 
@@ -118,7 +125,7 @@ include('../includes/footer.php');
       success: function (obj)
       {
         console.log(obj);
-        document.querySelector("#Categorie").value = obj[3];
+        document.querySelector("#Categorie").value = obj[2];
         document.querySelector("#id_admin").value =  obj[8];
         document.querySelector("#title").value = obj[4];
         document.querySelector("#description").value = obj[5] ;

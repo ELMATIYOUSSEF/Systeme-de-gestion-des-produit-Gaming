@@ -15,7 +15,7 @@
                 $table = 'categorie';
                     $data = getdata($table) ;
                     foreach ($data as $cat) {
-                        echo "<option name=".$cat['Id']." >$cat[Label]</option>";
+                        echo "<option value=".$cat['Id']." >$cat[Label]</option>";
                     }
                 ?>   
                 </select>
@@ -48,7 +48,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" name="addProduit" <?php echo $savehidden ?> class="btn btn-primary">Save</button>
-                <button type="submit" name="addProduit" <?php echo $updatehidden ?> class="btn btn-primary">Update</button>
+                <button type="submit" name="UpProduit" <?php echo $updatehidden ?> class="btn btn-primary">Update</button>
             </div>
         </form>
       </div>

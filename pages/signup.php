@@ -13,10 +13,10 @@ include('../config/scripts.php');
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
-    
     <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script defer src="https://parsleyjs.org/dist/parsley.min.js"></script>
+
    
     <title>Login</title>
 </head>
